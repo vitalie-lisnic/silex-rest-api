@@ -8,7 +8,6 @@
 
 namespace REST\ControllerProvider;
 
-
 use Silex\Application;
 use Silex\ControllerCollection;
 use Silex\ControllerProviderInterface;
@@ -18,9 +17,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\PreconditionFailedHttpException;
-use REST\Service\User;
 
-class Rest implements ControllerProviderInterface {
+class User implements ControllerProviderInterface {
     /**
      * Returns routes to connect to the given application.
      *

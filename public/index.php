@@ -8,6 +8,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 $app = new Application();
 
+$app->mount('/api/', new \REST\ControllerProvider\User());
+
+$app->register(new JDesrosiers\Silex\Provider\JsonSchemaServiceProvider());
+$app["json-schema.schema-store"]->add("user_create_schema", json_decode(file_get_contents(__DIR__ . '/../schema/user_create.json')));
+$app["json-schema.schema-store"]->add("user_update_schema", json_decode(file_get_contents(__DIR__ . '/../schema/user_update.json')));
+
 $app['db'] = function(){
     return new PDO(
         "mysql:dbname=RestAPI;host=mysql;encoding=UTF8",
@@ -21,19 +27,8 @@ $app['db'] = function(){
     );
 };
 
-$app->register(new JDesrosiers\Silex\Provider\JsonSchemaServiceProvider());
-
-
-$app["json-schema.schema-store"]->add("user_create_schema", json_decode(file_get_contents(__DIR__ . '/../schema/user_create.json')));
-$app["json-schema.schema-store"]->add("user_update_schema", json_decode(file_get_contents(__DIR__ . '/../schema/user_update.json')));
-
-
 $app['userService'] = function(Application $app){
-    return new \REST\Service\User($app['db']);
-};
-
-$app['userController'] = function(Application $app){
-    return new \REST\Service\User($app['db']);
+    return new User($app['db']);
 };
 
 $app->error(function (\Exception $e, $code) {
@@ -45,8 +40,5 @@ $app->error(function (\Exception $e, $code) {
     ];
     return new Response(json_encode($responseBody), $code);
 });
-
-$app->mount('/api/', new \REST\ControllerProvider\Rest());
-
 
 $app->run();
