@@ -1,0 +1,24 @@
+{
+    "name": "vitalie/silex-rest-api",
+    "require": {
+        "silex/silex": "^1.3",
+        "jdesrosiers/silex-json-schema-provider": "~0.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.7",
+        "behat/behat": "^3.0"
+    },
+
+    "autoload":{
+      "psr-0": {
+        "REST\\" : "src/"
+      }
+    },
+
+    "authors": [
+        {
+            "name": "Vitalie Lisnic",
+            "email": "Vitalie.Lisnic@yopeso.com"
+        }
+    ]
+}

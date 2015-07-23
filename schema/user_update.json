@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["class", "properties"],
+  "properties": {
+      "class": {
+          "type": "string",
+          "enum": ["user"]
+      },
+      "properties":{
+          "type": "object",
+          "additionalProperties": false,
+          "properties":{
+              "username":{
+                  "type": "string",
+                  "minLength":10
+              },
+              "first_name":{
+                  "type": "string",
+                  "minLength":10
+              },
+              "last_name":{
+                  "type": "string",
+                  "minLength":10
+              },
+              "email":{
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$"
+              }
+          }
+      }
+  }
+}
