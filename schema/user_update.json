@@ -13,15 +13,15 @@
           "properties":{
               "username":{
                   "type": "string",
-                  "minLength":10
+                  "minLength":5
               },
               "first_name":{
                   "type": "string",
-                  "minLength":10
+                  "minLength":5
               },
               "last_name":{
                   "type": "string",
-                  "minLength":10
+                  "minLength":5
               },
               "email":{
                   "type": "string",

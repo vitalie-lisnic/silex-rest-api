@@ -32,7 +32,7 @@ class User {
     }
 
     public function getUserIdsList(){
-        $userIds = $this->getDbConnection()->query("SELECT id FROM users;")->fetchAll(PDO::FETCH_FUNC, function($id){
+        $userIds = $this->getDbConnection()->query("SELECT id FROM users ORDER BY id ASC;")->fetchAll(PDO::FETCH_FUNC, function($id){
             return $id;
         });
 

@@ -17,6 +17,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
 {
 
     protected $requestMethod;
+    protected $requestBody;
     protected $app;
     /**
      * @var Client
@@ -49,7 +50,9 @@ class FeatureContext implements Context, SnippetAcceptingContext
 
     /**
      * @When request method is :arg1
+     * @Then If set request method to :arg1
      */
+
     public function requestMethodIs($arg1)
     {
         $this->requestMethod = $arg1;
@@ -57,10 +60,11 @@ class FeatureContext implements Context, SnippetAcceptingContext
 
     /**
      * @When I make a request to :arg1
+     * @Then If I make a request to :arg1
      */
     public function iMakeARequestTo($arg1)
     {
-        $this->client->request($this->requestMethod, $arg1);
+        $this->client->request($this->requestMethod, $arg1, [], [], [], $this->requestBody);
     }
 
     /**
@@ -96,5 +100,14 @@ class FeatureContext implements Context, SnippetAcceptingContext
         assertEquals($foundValue, $arg2);
 
     }
+
+    /**
+     * @When request body is:
+     */
+    public function requestBodyIs(PyStringNode $string)
+    {
+        $this->requestBody = $string;
+    }
+
 
 }
