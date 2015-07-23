@@ -50,7 +50,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
 
     /**
      * @When request method is :arg1
-     * @Then If set request method to :arg1
+     * @Then If I set request method to :arg1
      */
 
     public function requestMethodIs($arg1)

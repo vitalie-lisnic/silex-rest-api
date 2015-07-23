@@ -77,6 +77,6 @@ Feature: User CRUD
     And json response should contain property 'properties->first_name' with value 'Happy'
     And json response should contain property 'properties->last_name' with value 'User'
     And json response should contain property 'properties->email' with value 'test@test.com'
-    But If set request method to 'GET'
+    But If I set request method to 'GET'
     And If I make a request to '/api/user/21'
     Then response code should be '404'
