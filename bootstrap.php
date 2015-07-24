@@ -37,7 +37,7 @@ $app->error(function (\Exception $e, $code) {
             'message' => $e->getMessage()
         ]
     ];
-    return new Response(json_encode($responseBody), $code);
+    return new Response(json_encode($responseBody), $code, ['Content-Type' => 'application/json']);
 });
 
 return $app;
